@@ -1,0 +1,39 @@
+.parent-content{
+    display: flex;
+   justify-content: space-between;
+  gap:10px;
+  margin-left: 10px;
+    margin-bottom: 20px;
+    .content{
+
+        display: flex;
+        gap:7px;
+        .username{
+          
+            p{
+                margin: 0px;
+                font-size: medium;
+                font-weight: 700;
+            }
+            p:nth-child(2){
+                font-weight: 500;
+                font-size: smaller;
+                color: #64748b
+            }
+        }
+    }
+    button{
+        background-color: white;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: small;
+        padding: 13px 13px;
+        width: auto;
+        margin:auto;
+        color: rgb(59, 57, 57);
+        
+    }
+    button:hover{
+        background-color: rgb(229, 227, 227);
+    }
+}

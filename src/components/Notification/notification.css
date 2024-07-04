@@ -1,0 +1,42 @@
+.notification{
+
+        border-left: 1px solid gray;
+        border-right: 1px solid gray;
+        width:100%;
+        margin :0px 30px;
+        .noti-tab{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin:0px 10px;
+            border-bottom: 1px solid rgb(58, 55, 55); 
+        }
+    .parent-content{
+        display: flex;
+        margin:10px 10px;
+        border-bottom: 1px solid rgb(58, 55, 55); 
+        justify-content: start;
+        align-items: center;
+        #heart{
+            color: red;
+        }
+        #follow{
+            color: rgb(53, 110, 218);
+        }
+        .content{
+            margin-bottom: 10px;
+            img{
+                width:30px;
+                height:30px;
+                margin: 0px;
+            }
+            p{
+                margin: 0px;
+                
+            }
+
+        }
+       
+    }
+    
+}

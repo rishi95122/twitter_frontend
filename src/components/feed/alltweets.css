@@ -1,0 +1,106 @@
+
+    .posts{
+        margin: 10px;
+        .warning{
+            text-align: center;
+            color: #6a788c;
+        }
+        .post{
+            display: flex;
+            border-bottom: 1px solid rgb(58, 55, 55);
+            gap:8px;
+            margin-right: 10px;
+            margin-top: 10px;;
+            .avatar{
+                margin:0px 5px;
+             }
+            .content{
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 8px;
+                width: 100%;
+                .img{
+                    
+                    max-height: 300px;
+                   
+                    display: flex;
+                    border: 1px solid rgb(68, 66, 66);
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 5px;
+                    img{
+                       width: 80%;
+                       max-width: 500px;
+                     height: 100%;
+                    }
+                    margin-bottom: 10px;
+                }
+                .inner-content{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .username{
+                        display: flex;
+                        gap:5px;
+                      align-items: center;
+                      justify-content: center;
+                        #delete{
+                            text-align: end;
+                        }
+                        p{
+                            margin: 0px;
+                            font-size: medium;
+                            font-weight: bold;
+                        }
+                        p:nth-child(2){
+                            font-weight: 500;
+                            font-size: small;
+                            color: #6a788c
+                        }
+                        p:nth-child(3){
+                            font-weight: 100;
+                            font-size: small;
+                            color: #6a788c
+                        }
+                }
+                }
+               
+            p{
+                margin-top: 2px;
+            }
+            .activity-btns{
+                display: flex;
+           
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+              span{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap:3px;
+                p{
+                    margin: 0px;
+                    font-size: smaller;
+                }
+                #like{
+                    :hover{
+                        color: rgb(236, 92, 116);
+                    }
+                }
+                #comment{
+                    :hover{
+                        color: green
+                    }
+                }
+                #bookmark{
+                    :hover{
+                        color: blue
+                    }
+                }
+              }
+            }
+            }
+           
+        }
+    }

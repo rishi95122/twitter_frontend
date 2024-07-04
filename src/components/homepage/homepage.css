@@ -1,0 +1,15 @@
+.homepage{
+    width:150vh;
+    margin:0 auto;
+    .inner{
+
+    display: flex;
+    justify-content: space-between;
+        width:auto;
+   
+}}
+@media (max-width:1200px){
+    .homepage{
+        width: 100%;
+    }
+}

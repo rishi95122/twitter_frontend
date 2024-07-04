@@ -1,0 +1,45 @@
+.login{
+    display: flex;
+    justify-content: space-centre;
+    align-items: center;
+   
+margin:0px 50px;
+    height: 100vh;
+    gap:10px;
+   img{
+    width: 60%;
+   }
+   .login-content{
+    height: 50%;
+    width: 300px;
+    p{
+        font-weight: bold;
+        font-size: xx-large;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .username{
+        display: flex;
+        flex-direction: column;
+        gap:6px;
+        .error{
+            color: red;
+            font-size: medium;
+            font-weight: 500;
+           
+        }
+
+        #standard-basic{
+            color: white;
+        }
+        button{
+            padding: 10px 20px;
+            color: white;
+            font-weight: 600;
+            font-size: medium;
+            border: none;
+            border-radius: 15px;
+            background-color: rgb(82, 190, 226);
+        }
+    }
+   }
+}

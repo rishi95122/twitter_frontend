@@ -1,0 +1,117 @@
+.feed{
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    width:100%;
+    margin :0px 30px;
+
+}
+.createpost{
+   
+    .for{
+        display: flex;
+        justify-content: space-around;
+       
+    }
+    p{
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+        padding-top: 20px;;
+        height: 40px;
+      margin:0px;
+       
+    }
+    p:hover{
+        background-color: rgb(40, 38, 38);
+    }
+    .postinput{
+        display: flex;
+        border-bottom: 1px solid rgb(58, 55, 55);
+    border-top: 1px solid rgb(58, 55, 55);
+   gap:10px;
+   
+        margin:0px 10px;
+     .avatar{
+        margin:5px;
+     }
+        .post{
+            display: flex;
+            flex-direction: column;
+            width:100%;
+            input{
+                width:90%;
+               
+                color: white;
+                height:80px;
+                background-color: black;
+                text-align: start;
+                border:none;
+                border-bottom: 1px solid rgb(58, 55, 55);
+                font-size:larger;
+                
+            }
+            input::placeholder{
+                transform: translate(0, -50%); 
+                position: relative;
+                top: 0;
+                left: 0;
+            }
+            input:focus{
+              color: white;
+                outline: none;
+            }
+            .input-img{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                img{
+                
+                    height: 300px;
+                }
+
+             #cross-btn{
+                align-self: end;
+                cursor: pointer;
+                :hover{
+                    color: rgb(52, 140, 222);
+                }
+             }
+              margin-right:10px;
+              min-width: 200px;
+                padding: 20px;
+                img{
+                    width:100%;
+                }
+            }
+            .btn{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 10px 0px;
+                button{
+                    background-color: rgb(67, 156, 234);
+                    padding: 10px 20px;
+                   color: white;
+                   border-radius: 30px;
+                   border: none;
+                   font-weight: 600;
+                   font-size: large;
+                   margin-right: 15px;
+                }
+            }
+        }
+    }
+    
+}
+
+@media (max-width:1200px){
+    .feed{
+        margin-right:0px;
+    }
+}
+@media (max-width:800px){
+    .feed{
+        margin-left:0px;
+    }
+}
