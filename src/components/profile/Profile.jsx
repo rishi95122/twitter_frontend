@@ -92,7 +92,9 @@ username =username.toLowerCase()
       </div>
       {(isLoading || isRefetching) && <TwitterProfileSkeleton />}
       {!isLoading && !isRefetching && !user && <p className='warning'>User not found</p>}
-      <div className="parent-details">
+      {!isLoading && !isRefetching && user && <div>
+      
+       <div className="parent-details">
         <div className="cover">
           <img src={coverImg || user?.coverImg } />
           {authUser?._id===user?._id &&<CiEdit
@@ -174,7 +176,9 @@ username =username.toLowerCase()
         <p onClick={()=>setFeedType("likes")} style={(feedType==="likes")?{borderBottom:'3px solid rgb(53, 132, 227)'}:{}}>Likes</p>
       </div>
       <AllTweets feedType={feedType} userId={user?._id}  username={username}/>
-    </div>}</div>
+    </div>}
+    </div>}
+    </div>
   );
 };
 
