@@ -1,15 +1,12 @@
 
-import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Homepage from './components/homepage/Homepage';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import Notification from './components/Notification/Notification';
+
 import { Toaster } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
 
 function App() {
-  const { data: authUser, isLoading } = useQuery({
+ useQuery({
 		// we use queryKey to give a unique name to our query and refer to it later
 		queryKey: ["authUser"],
 		queryFn: async () => {
