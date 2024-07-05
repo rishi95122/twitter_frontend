@@ -5,7 +5,7 @@
     margin :0px 30px;
     .warning{
         text-align: center;
-        background-color: grey;
+       color: grey;
     }
     .back-bar{
         display: flex;

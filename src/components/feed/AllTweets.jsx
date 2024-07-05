@@ -8,7 +8,6 @@ import { CiBookmark } from "react-icons/ci";
 import { Loader } from 'rsuite';
 import {NavLink} from "react-router-dom"
 import {
-  QueryClient,
   useMutation,
   useQuery,
   useQueryClient,
@@ -17,13 +16,12 @@ import { MdDelete } from "react-icons/md";
 import toast from "react-hot-toast";
 import Comment from "./CommentModal.jsx/Comment";
 import { formatPostDate } from "../../functions";
-import { Skeleton } from "@mui/material";
 import PostsSkeleton from "../skeletons/PostsSkeleton";
 const AllTweets = ({ feedType, username, userId }) => {
   const { data: authUser } = useQuery({ queryKey: ["authUser"] });
   const [cmt, setisCmt] = useState();
   const queryClient = useQueryClient();
-
+const [delId,setDelid]=useState()
   const getPostEndpoint = () => {
     switch (feedType) {
       case "forYou":
@@ -49,7 +47,9 @@ const AllTweets = ({ feedType, username, userId }) => {
     queryKey: ["posts"],
     queryFn: async () => {
       try {
-        const res = await fetch(api);
+        const res = await fetch(`${process.env.REACT_APP_PROXY}`+api,{
+          credentials:"include"
+        });
         const data = await res.json();
 
         if (!res.ok) {
@@ -66,7 +66,7 @@ const AllTweets = ({ feedType, username, userId }) => {
     refetch();
   }, [refetch, feedType]);
 
-  const { mutate, isPending:isDeleting, error } = useMutation({
+  const { mutate, isPending:isDeleting, } = useMutation({
     mutationFn: async (id) => {
       try {
         const res = await fetch(
@@ -89,11 +89,12 @@ const AllTweets = ({ feedType, username, userId }) => {
     },
   });
 
-  const { mutate: likePost, isPending: isLiking } = useMutation({
+  const { mutate: likePost } = useMutation({
     mutationFn: async (post) => {
       try {
-        const res = await fetch(`/api/posts/like/${post?._id}`, {
+        const res = await fetch(`${process.env.REACT_APP_PROXY}/api/posts/like/${post?._id}`, {
           method: "POST",
+           credentials:"include"
         });
         const data = await res.json();
         if (!res.ok) {
@@ -162,15 +163,21 @@ const AllTweets = ({ feedType, username, userId }) => {
                     <p>{" " + formatPostDate(item?.createdAt)}</p>
                   </div>
                   </NavLink>
-                  {item.user?._id == authUser?._id && (
-                   !isDeleting? <MdDelete onClick={() => mutate(item._id)} id="delete" />:<Loader vertical />
-                    
-                  )}
+                 
+                      {item.user?._id == authUser?._id && (
+                   (isDeleting &&(delId===item._id)) ?
+                          <Loader /> :<MdDelete onClick={() =>{
+                            setDelid(item._id)
+                            mutate(item._id)}} id="delete" />
+                
+                  )
+                  
+                  }
                 </div>
                 <p>{item.text}</p>
                 { item.img && 
                 <div className="img">
-              <img src={item.img} />
+              <img src={item.img} alt="" />
                   </div>
         }
                 <div className="activity-btns">

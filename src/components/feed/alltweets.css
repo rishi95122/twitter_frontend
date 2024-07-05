@@ -4,6 +4,7 @@
         .warning{
             text-align: center;
             color: #6a788c;
+            background-color: black;
         }
         .post{
             display: flex;

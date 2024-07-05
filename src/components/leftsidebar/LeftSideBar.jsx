@@ -3,11 +3,11 @@ import "./leftside.css";
 import userp from "../../store/images/userp.png"
 import { AiOutlineLogout } from "react-icons/ai";
 import { CiBellOn, CiBookmark, CiHome, CiSearch, CiUser } from "react-icons/ci";
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import {  NavLink, useNavigate } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import Avatar from "react-avatar";
-import { POSTS } from "../../store/dummy";
+
 import ProfileIconSkeleton from "../skeletons/ProfileIconSkeleton";
 const LeftSideBar = () => {
   const { data ,isPending, isRefetching} = useQuery({ queryKey: ["authUser"] });
@@ -16,7 +16,7 @@ const LeftSideBar = () => {
   const { mutate } = useMutation({
     mutationFn: async () => {
       try {
-        const res = await fetch("/api/auth/logout", {
+        const res = await fetch(`${process.env.REACT_APP_PROXY}/api/auth/logout`, {
           method: "POST",
         });
         const data = await res.json();

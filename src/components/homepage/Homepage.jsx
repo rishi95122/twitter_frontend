@@ -3,7 +3,7 @@ import LeftSideBar from '../leftsidebar/LeftSideBar'
 import Feed from '../feed/Feed'
 import RightSideBar from '../rightsidebar/RightSideBar'
 import "./homepage.css"
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Login from '../../pages/Login'
 import Signup from '../../pages/Signup'
 import Notification from '../Notification/Notification'

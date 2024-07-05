@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './updateform.css'
 import TextField from '@mui/material/TextField';
-import toast from 'react-hot-toast';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+
+
 import useUpdateUserProfile from '../../hooks/useUpdateUserProfile';
 import { IoIosCloseCircle } from "react-icons/io";
 const UpdateForm = ({authUser,setClick}) => {
-  const queryClient = useQueryClient();
+
   const [formData, setFormData] = useState({
     fullName: authUser.fullName,
     username: authUser.username,

@@ -1,5 +1,4 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+
 import "./notification.css"
 import { FaUser,FaHeart } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -8,7 +7,7 @@ import toast from 'react-hot-toast';
 import Avatar from 'react-avatar';
 const Notification = () => {
   const queryClient = useQueryClient();
-	const { data: notifications, isLoading } = useQuery({
+	const { data: notifications,  } = useQuery({
 		queryKey: ["notifications"],
 		queryFn: async () => {
 			try {
@@ -29,8 +28,9 @@ const Notification = () => {
 	const { mutate: deleteNotifications } = useMutation({
 		mutationFn: async () => {
 			try {
-				const res = await fetch("/api/notifications", {
+				const res = await fetch(`${process.env.REACT_APP_PROXY}/api/notifications`, {
 					method: "DELETE",
+					credentials:"include"
 				});
 				const data = await res.json();
 

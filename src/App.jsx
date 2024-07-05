@@ -12,7 +12,8 @@ function App() {
 		queryFn: async () => {
 			try {
 				const res = await fetch(`${process.env.REACT_APP_PROXY}/api/auth/me`,{
-					credentials:"include"
+					  method: 'GET',
+        credentials: 'include'
 				});
 				const data = await res.json();
 				if (data.error) return null;

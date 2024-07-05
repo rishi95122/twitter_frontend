@@ -2,16 +2,16 @@ import React, { useRef, useState } from "react";
 import "./profile.css";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { CiEdit } from "react-icons/ci";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { FaLink } from "react-icons/fa";
 import userp from "../../store/images/userp.png"
 import { CiCalendar } from "react-icons/ci";
 import AllTweets from "../feed/AllTweets";
 import UpdateForm from "./UpdateForm/UpdateForm";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {  useQuery } from "@tanstack/react-query";
 import { formatMemberSinceDate } from "../../functions";
 import useFollow from "../hooks/useFollow";
-import toast from "react-hot-toast";
+
 import useUpdateUserProfile from "../hooks/useUpdateUserProfile";
 import TwitterProfileSkeleton from "../skeletons/TwitterProfileSkeleton";
 const Profile = () => {
@@ -28,12 +28,11 @@ const Profile = () => {
   const { data: posts,isPending:isPostLoading } = useQuery({ queryKey: ["posts"] });
   let { username } = useParams();
 username =username.toLowerCase()
-  const queryClient =useQueryClient()
 
   const {
     data: user,
     isLoading,
-    refetch,
+ 
     isRefetching,
   } = useQuery({
     queryKey: ["userProfile"],

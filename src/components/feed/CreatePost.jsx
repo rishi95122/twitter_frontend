@@ -3,7 +3,7 @@ import "./feed.css";
 import Avatar from "react-avatar";
 import { CiImageOn } from "react-icons/ci";
 import { IoCloseSharp } from "react-icons/io5";
-import { useMutation, useQueries, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import toast from "react-hot-toast";
 import userp from "../../store/images/userp.png"
 import AllTweets from "./AllTweets";
@@ -30,17 +30,17 @@ console.log(img)
 	const {
 		mutate: createPost,
 		isPending,
-		isError,
-		error,
+
 	} = useMutation({
 		mutationFn: async ({ text, img }) => {
 			try {
-				const res = await fetch("/api/posts/create", {
+				const res = await fetch(`${process.env.REACT_APP_PROXY}/api/posts/create`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
 					},
 					body: JSON.stringify({ text, img }),
+           credentials:"include"
 				});
 				const data = await res.json();
 				if (!res.ok) {
@@ -90,7 +90,7 @@ console.log(img)
                         imgRef.current.value = null;
                       }}
                     />
-              <img src={img}/>
+              <img src={img} alt=""/>
               </div>
             )
           }

@@ -6,7 +6,6 @@ import toast from 'react-hot-toast';
 import userp from "../../../store/images/userp.png";
 import Avatar from 'react-avatar';
 import { IoIosCloseCircle } from "react-icons/io";
-import { formatPostDate } from '../../../functions';
 const Comment = ({id,setisCmt,item}) => {
     console.log(item)
     const [comment, setComment] = useState("");
@@ -14,12 +13,13 @@ const Comment = ({id,setisCmt,item}) => {
     const { mutate: commentPost, isPending: isCommenting } = useMutation({
 		mutationFn: async () => {
 			try {
-				const res = await fetch(`/api/posts/comment/${id}`, {
+				const res = await fetch(`${process.env.REACT_APP_PROXY}/api/posts/comment/${id}`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
 					},
 					body: JSON.stringify({ text: comment }),
+                    credentials:"include"
 				});
 				const data = await res.json();
 
