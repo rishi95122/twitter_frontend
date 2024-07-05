@@ -95,7 +95,7 @@ username =username.toLowerCase()
       
        <div className="parent-details">
         <div className="cover">
-          <img src={coverImg || user?.coverImg } />
+          <img alt="" src={coverImg || user?.coverImg } />
           {authUser?._id===user?._id &&<CiEdit
             id="edit-btn"
             size={22}
@@ -106,7 +106,7 @@ username =username.toLowerCase()
         {click && <UpdateForm setClick={setClick} authUser={authUser}/>}
         <div className="profile-img">
           <div className="img">
-            <img src={user?.profileImg||userp} />
+            <img alt="" src={user?.profileImg||userp} />
             {authUser?._id===user?._id &&<CiEdit
               id="profile-btn"
               size={22}
