@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import "./feed.css";
 import Avatar from "react-avatar";
 import { CiImageOn } from "react-icons/ci";

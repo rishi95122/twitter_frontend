@@ -164,7 +164,7 @@ const [delId,setDelid]=useState()
                   </div>
                   </NavLink>
                  
-                      {item.user?._id == authUser?._id && (
+                      {item.user?._id === authUser?._id && (
                    (isDeleting &&(delId===item._id)) ?
                           <Loader /> :<MdDelete onClick={() =>{
                             setDelid(item._id)
