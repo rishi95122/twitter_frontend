@@ -18,6 +18,7 @@ const LeftSideBar = () => {
       try {
         const res = await fetch(`${process.env.REACT_APP_PROXY}/api/auth/logout`, {
           method: "POST",
+          credentials:"include"
         });
         const data = await res.json();
 
