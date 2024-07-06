@@ -17,7 +17,7 @@ const LeftSideBar = () => {
     mutationFn: async () => {
       try {
         const res = await fetch(`${process.env.REACT_APP_PROXY}/api/auth/logout`, {
-          method: "POST",
+          method: "GET",
           credentials:"include"
         });
         const data = await res.json();
