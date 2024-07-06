@@ -4,20 +4,39 @@ import userp from "../../store/images/userp.png"
 import { AiOutlineLogout } from "react-icons/ai";
 import { CiBellOn, CiBookmark, CiHome, CiSearch, CiUser } from "react-icons/ci";
 import {  NavLink, useNavigate } from "react-router-dom";
-import { useQuery, } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import Avatar from "react-avatar";
-import Cookies from 'js-cookie';
 
 import ProfileIconSkeleton from "../skeletons/ProfileIconSkeleton";
 const LeftSideBar = () => {
   const { data ,isPending, isRefetching} = useQuery({ queryKey: ["authUser"] });
- const nav=useNavigate("/")
-  function handleLogout(){
-   Cookies.remove('jwt')
-    toast.success("Logged out")
-    nav("/login")
-  }
+  const queryClient = useQueryClient();
+  const nav=useNavigate()
+  const { mutate } = useMutation({
+    mutationFn: async () => {
+      try {
+        const res = await fetch(`${process.env.REACT_APP_PROXY}/api/auth/logout`, {
+          method: "GET",
+          credentials:"include"
+        });
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || "Something went wrong");
+        }
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
+    onSuccess: () => {
+      toast.success("Logout done");
+      queryClient.invalidateQueries({ queryKey: ["authUser"] }); //refetch auth user
+    },
+    onError: () => {
+      toast.error("Logout failed");
+    },
+  });
   return (
     <div className="leftsidebar">
       <div>
@@ -57,7 +76,8 @@ const LeftSideBar = () => {
             <CiBookmark size={25} />
             <p>Bookmarks</p>
           </div>
-          <div className="icon" >
+          <div className="icon" onClick={() => {mutate()  
+             nav("/login")}}>
             <AiOutlineLogout size={25} />
             <p>Logout</p>
           </div>
@@ -81,7 +101,10 @@ const LeftSideBar = () => {
               </div>
             </div>
           </NavLink>
-          <AiOutlineLogout onClick={handleLogout} size={22} />
+          <AiOutlineLogout onClick={() => {mutate()
+            nav("/login")
+
+          }} size={22} />
         </div>}
         
       </div>
