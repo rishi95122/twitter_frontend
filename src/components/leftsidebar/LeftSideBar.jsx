@@ -4,7 +4,7 @@ import userp from "../../store/images/userp.png"
 import { AiOutlineLogout } from "react-icons/ai";
 import { CiBellOn, CiBookmark, CiHome, CiSearch, CiUser } from "react-icons/ci";
 import {  NavLink, useNavigate } from "react-router-dom";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery, } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import Avatar from "react-avatar";
 import Cookies from 'js-cookie';
@@ -14,6 +14,7 @@ const LeftSideBar = () => {
   const { data ,isPending, isRefetching} = useQuery({ queryKey: ["authUser"] });
  const nav=useNavigate("/")
   function handleLogout(){
+   Cookies.remove('jwt')
     toast.success("Logged out")
     nav("/login")
   }
@@ -56,7 +57,7 @@ const LeftSideBar = () => {
             <CiBookmark size={25} />
             <p>Bookmarks</p>
           </div>
-          <div className="icon"  onClick={handleLogout}>
+          <div className="icon" >
             <AiOutlineLogout size={25} />
             <p>Logout</p>
           </div>
